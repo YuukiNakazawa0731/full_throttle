@@ -1,0 +1,514 @@
+@charset "UTF-8";
+/*
+full throttle
+common
+=====[rgb]=======
+ロゴ オレンジ
+rgb(255, 136, 0)
+=================
+*/
+
+/*===[デフォルトcss]===*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  line-height: normal; /*行間*/
+  letter-spacing: normal; /*文字間*/
+  border: none;
+  font-weight: normal;
+}
+
+html {
+  font-size: 62.5%; /*サイズリセット*/
+  font-family: "Arial", "メイリオ", sans-serif; /*フォント*/
+  scroll-behavior: auto;
+}
+
+body {
+  display: block;
+  height: 100%;
+  font-size: 1.6em; /*絶対サイズ*/
+  color: #373737;
+}
+
+img {
+  display: block;
+  object-fit: cover;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: #000000;
+  cursor: pointer;
+}
+
+input,
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  border: 0.1rem solid #000000;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #cacaca;
+  cursor: pointer;
+}
+
+ol,
+ul {
+  list-style: none;
+  word-wrap: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*===[ローディング]===*/
+#loading-containar {
+  position: fixed;
+  z-index: 100;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  color: #ffffff;
+}
+/*2回目以降アクセス非表示*/
+#loading-containar.no-load {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#center-line {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  z-index: 100;
+  height: 0.1rem;
+  width: 0;
+  background-color: #ffffff;
+  transition: all 1.5s ease 2s;
+}
+/*center_lineスライドイン*/
+#center-line.line-through {
+  width: 110%;
+}
+
+#bike-icon {
+  position: absolute;
+  top: 44.5%;
+  left: -5%;
+  z-index: 100;
+  width: 5%;
+  transition: all 1.5s ease 2s;
+}
+/*bike_iconスライドイン*/
+#bike-icon.bike-through {
+  left: 110%;
+}
+
+#loading-txt-outer {
+  position: absolute;
+  top: 60%;
+  left: 40%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: 3%;
+  width: 20%;
+  font-size: 2rem;
+  font-family: "Raleway", "sans-serif";
+  color: #ffffff;
+}
+
+#loading-txt {
+  width: 100%;
+  font-size: 2rem;
+  font-family: "Raleway", "sans-serif";
+  color: #ffffff;
+}
+
+/*割れる画面*/
+.load-wrapper {
+  width: 100%;
+  height: 50%;
+  background-color: #0e0d0d;
+  transform: scaleY(1);
+  transition: all 0.5s ease 2.8s;
+}
+/*割れる画面のアニメーション*/
+.load-wrapper.cover-up {
+  position: absolute;
+  top: 0;
+  transform-origin: center top;
+}
+.load-wrapper.cover-down {
+  position: absolute;
+  bottom: 0;
+  transform-origin: center bottom;
+}
+.coveranime {
+  transform: scaleY(0);
+}
+
+/*===[ヘッダー]===*/
+header {
+  position: fixed;
+  opacity: 0;
+  z-index: 10;
+  transform: translateY(-20%);
+  display: flex;
+  align-items: center;
+  padding: 0.5% 0;
+  width: 100%;
+  background-color: #0e0d0d;
+  transition: all 0.8s ease-out 1s;
+}
+/*ヘッダースライドイン*/
+.header-slidein {
+  opacity: 0.7;
+  transform: translateY(0);
+}
+
+#head-logo {
+  display: block;
+  margin-left: 2%;
+  width: 10%;
+  transition: all 0.2s ease-in-out;
+}
+/*head-logo hover*/
+#head-logo:hover {
+  transform: rotate(5deg);
+}
+
+#head-logo-img {
+  width: 100%;
+}
+
+/*==[メニュー]==*/
+#menu-list-outer {
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  width: 35%;
+}
+
+.menu-list {
+  position: relative;
+  margin: 0 2%;
+  padding: 0 1%;
+  width: auto;
+  text-align: center;
+  color: #ffffff;
+}
+/*menu-list hover*/
+.menu-list:hover {
+  transition: all 0.3s ease-in;
+  transform: scale(1.1, 1.1);
+}
+.menu-list:before {
+  position: absolute;
+  content: "";
+  bottom: 5%;
+  left: 0;
+  width: 0;
+  border-bottom: 0.2rem solid #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+.menu-list:hover:before {
+  width: 100%;
+}
+
+.menu-item {
+  font-size: 2.6rem;
+  font-family: "Raleway", "sans-serif";
+  color: #ffffff;
+}
+
+/*モバイルメニューボタン非表示*/
+#menu-btn {
+  display: none;
+}
+#menu-list-mobile-outer {
+  display: none;
+}
+
+/*===[メインコンテンツ]===*/
+/*固定背景は非表示(モバイル)*/
+#main-wrapper-mobile {
+  display: none;
+}
+
+/*[コンテンツフレーム]*/
+#contents-container {
+  position: relative;
+  padding: 0.1% 8%;
+  width: 100%;
+  background-image: url(../../images/contents/wood_grain.png);
+  background-size: 100%;
+}
+
+.contents-outer {
+  opacity: 0;
+  transform: translateY(3%);
+  margin-top: 10%;
+  padding: 3% 0;
+  width: 100%;
+  border-radius: 0.2rem;
+  background-image: url(../../images/contents/contents_back.png);
+  box-shadow: 1.6rem 1.6rem 1.3rem #0e0d0d;
+  transition: all 0.8s ease-out;
+}
+/*コンテンツ枠fadein*/
+.contents-outer.contents-fadeup {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contents-inner {
+  opacity: 0;
+  transform: translateY(10%);
+  transition: all 0.8s ease-out 0.5s;
+}
+/*コンテンツ内fadein*/
+.contents-inner-fadeup {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*[コンテンツ内shadow]*/
+.window-shadow-l {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 25%;
+  background: linear-gradient(90deg, #00000026, #00000000);
+}
+
+.window-shadow-r {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 25%;
+  background: linear-gradient(-90deg, #00000026, #00000000);
+}
+
+/*[付箋]*/
+.postit-outer {
+  position: relative;
+  opacity: 0;
+  transform: rotate(-12deg);
+  z-index: 10;
+  left: 1%;
+  height: 10rem;
+  width: 0;
+  transition: all 0.5s ease-out 0.5s;
+}
+/*付箋スライドイン*/
+.postit-outer.postit-fadein {
+  opacity: 1;
+  width: 50rem;
+}
+
+.postit {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  padding-bottom: 20%;
+  height: 5rem;
+  width: 70%;
+  text-align: center;
+  font-size: 5rem;
+  font-family: "Rock Salt", "cursive";
+  box-shadow: 1rem 0rem 0.7rem #14131375;
+  background: linear-gradient(
+    to right,
+    #ff8800 0%,
+    #ffcf67 0.5%,
+    #ffcf67 13%,
+    #ffb71c 16%
+  );
+  color: #404040;
+}
+.postit::before {
+  bottom: -2%;
+  left: 7%;
+  content: "";
+  z-index: -1;
+  transform: rotate(4deg);
+  width: 95%;
+  box-shadow: 1rem 0rem 0.7rem #14131375;
+  filter: blur(0.4rem);
+}
+
+/*===[ボタン]===*/
+/*[TOPボタン]*/
+#return-top-icon {
+  position: fixed;
+  bottom: 3%;
+  left: -10%;
+  z-index: 10;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 17rem;
+  width: 17rem;
+  border-radius: 50%;
+  background: initial;
+  transition: 1s ease-in-out;
+}
+/*TOPボタンスライドイン*/
+#return-top-icon.return-fadein {
+  opacity: 1;
+  left: 3%;
+}
+/*TOPボタンスライドアウト*/
+#return-top-icon.return-fedeout {
+  opacity: 0;
+  left: 50%;
+}
+
+#outer-circle-img {
+  width: 100%;
+  animation: circle-Roll ease-in-out 7s infinite;
+}
+/*回転*/
+@keyframes circle-Roll {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#return-bike-body {
+  position: absolute;
+  top: 28%;
+  left: 16%;
+  width: 70%;
+  animation: bike-vive 0.3s linear infinite;
+}
+/*ホイール回転*/
+@keyframes bike-vive {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(3%);
+  }
+}
+/*バイク発進*/
+#return-bike-body.bike-dash {
+  transition: 0.1s ease;
+  transform: rotate(45deg);
+}
+
+#tire-f {
+  position: absolute;
+  top: 47%;
+  left: 20%;
+  width: 18%;
+  animation: tire-Roll 1s linear infinite;
+}
+
+#tire-r {
+  position: absolute;
+  top: 44%;
+  left: 60%;
+  width: 20%;
+  animation: tire-Roll 1s linear infinite;
+}
+/*ホイール回転*/
+@keyframes tire-Roll {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/*[汎用ボタン]*/
+.local-btn {
+  position: relative;
+  z-index: 5;
+  padding: 0.3% 3.5%;
+  font-size: 2.6rem;
+  font-weight: bold;
+  font-family: "Raleway", "sans-serif";
+  text-shadow: 0.1rem 0.1rem 0.2rem #ffffff;
+  border: 0.3rem solid #0000ff;
+  border-radius: 0.5rem;
+  box-shadow: 1.6rem 1.6rem 1.3rem #0e0d0d;
+  background-color: #ff8800;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+/*汎用ボタン(hover)*/
+.local-btn:hover {
+  margin-top: 0.5%;
+  box-shadow: 0.8rem 0.8rem 0.5rem #0e0d0d;
+}
+
+/*[案内]*/
+.flash-nav {
+  position: absolute;
+  opacity: 0;
+  z-index: 11;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 0.25rem;
+  color: #ffffff;
+  animation: nav-flash 1.5s linear infinite;
+}
+/*案内点滅*/
+@keyframes nav-flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*===[フッター]===*/
+footer {
+  bottom: 0;
+  display: grid;
+  justify-items: right;
+  align-items: center;
+  width: 100%;
+  background-color: #000000;
+}
+
+/*copyright*/
+#copy-right {
+  padding: 1% 5%;
+  width: 30%;
+  letter-spacing: 0.2rem;
+  text-align: right;
+  font-size: 1rem;
+  font-family: "Raleway", "sans-serif";
+  color: #ffffff;
+}

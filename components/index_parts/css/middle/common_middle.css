@@ -1,0 +1,481 @@
+@charset "UTF-8";
+/*
+full throttle
+common_middle
+=====[rgb]=======
+ロゴ オレンジ
+rgb(255, 136, 0)
+=================
+*/
+
+/*===[デフォルトcss]===*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  line-height: normal; /*行間*/
+  letter-spacing: normal; /*文字間*/
+  border: none;
+}
+
+html {
+  font-size: 100%; /*サイズリセット*/
+  font-family: "Arial", "メイリオ", sans-serif; /*フォント*/
+}
+
+body {
+  display: block;
+  height: 100%;
+  font-size: 1em; /*絶対サイズ*/
+  font-weight: normal;
+}
+
+img {
+  display: block;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: #000000;
+}
+
+input,
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  border: 0.1rem solid #000000;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #cacaca;
+}
+
+ol,
+ul {
+  list-style: none;
+  word-wrap: break-word;
+  line-height: 1;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*===[ローディング]===*/
+#loading-containar {
+  position: fixed;
+  z-index: 100;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  color: #ffffff;
+}
+
+/*2回目以降アクセス非表示*/
+#loading-containar.no-load {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#center-line {
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  left: 0;
+  height: 0.1rem;
+  width: 0;
+  background-color: #ffffff;
+  transition: 1s ease 2s;
+}
+/*center_lineスライドイン*/
+#center-line.line-through {
+  width: 120%;
+}
+
+#bike-icon {
+  position: absolute;
+  z-index: 100;
+  top: 47%;
+  left: -10%;
+  width: 10%;
+  transition: 1s ease 2s;
+}
+/*bike_iconスライドイン*/
+#bike-icon.bike-through {
+  left: 110%;
+}
+
+#loading-txt-outer {
+  position: absolute;
+  z-index: 100;
+  top: 60%;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  height: 3%;
+  width: 105%;
+  font-family: "Raleway", "sans-serif";
+  color: #ffffff;
+}
+
+#loading-txt {
+  width: 100%;
+  font-size: 1.8rem;
+  font-family: "Raleway", "sans-serif";
+  color: #ffffff;
+}
+
+/*割れる画面のアニメーション*/
+.load_wrapper {
+  position: relative;
+  height: 50vh;
+  width: 100vw;
+  background-color: #0e0d0d;
+  transition: 0.2s;
+  transform: scaleY(1);
+}
+.load_wrapper.cover-up {
+  position: absolute;
+  top: 0;
+  transform-origin: center top;
+  transition: 0.5s ease 2.5s;
+}
+.load_wrapper.cover-down {
+  position: absolute;
+  bottom: 0;
+  transform-origin: center bottom;
+  transition: 0.5s ease 2.5s;
+}
+/*割れる画面のアニメーション*/
+.cover-up.coveranime,
+.cover-down.coveranime {
+  transform: scaleY(0);
+}
+
+/*===[ヘッダー]===*/
+header {
+  position: fixed;
+  opacity: 0;
+  z-index: 1;
+  width: 100vw;
+  transform: translateY(-10%);
+}
+/*ヘッダースライドイン*/
+header.header-slidein {
+  opacity: 0.7;
+  transform: translateY(0%);
+}
+
+#head-logo-img {
+  display: none;
+}
+
+/*[メニューアイコン]*/
+#menu-btn {
+  position: relative;
+  z-index: 150;
+  margin: 3%;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 0.2rem;
+  background-color: #ffffff;
+}
+/*ボタン内側*/
+#menu-btn-outer {
+  display: inline-block;
+}
+.menu-btn-line {
+  position: absolute;
+  left: 25%;
+  display: inline-block;
+  height: 5%;
+  width: 50%;
+  border-radius: 0.3rem;
+  background-color: #000000;
+  transition: all 0.3s;
+}
+.menu-btn-line:nth-of-type(1) {
+  top: 25%;
+}
+.menu-btn-line:nth-of-type(2) {
+  top: 50%;
+}
+.menu-btn-line:nth-of-type(3) {
+  top: 75%;
+}
+/*メニューアイコンanime*/
+.menu-btn-line.active.openbtn-area {
+  transform: rotateY(-360deg);
+}
+.menu-btn-line:nth-of-type(1).active {
+  top: 50%;
+  left: 25%;
+  width: 50%;
+  transform: translateY(25%) rotate(-135deg);
+}
+.menu-btn-line:nth-of-type(2).active {
+  opacity: 0;
+}
+.menu-btn-line:nth-of-type(3).active {
+  top: 50%;
+  left: 25%;
+  transform: translateY(25%) rotate(135deg);
+  width: 50%;
+}
+
+#menu-list-mobile-outer {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+#menu-list-mobile {
+  padding-top: 25%;
+}
+
+.menu-item-mobile {
+  display: block;
+  padding: 3% 0;
+  letter-spacing: 0.3rem;
+  font-size: 2.4rem;
+  font-family: "Raleway", "sans-serif";
+}
+
+/*PCメニュー非表示*/
+#menu-list-outer {
+  display: none;
+}
+
+/*===[メインコンテンツ]===*/
+#main-wrapper-mobile {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-image: url(../../images/title/title_back.jpeg);
+  background-size: cover;
+}
+
+/*コンテンツ内シャドウ(非表示)*/
+.window-shadow-l,
+.window-shadow-r {
+  display: none;
+}
+
+/*[コンテンツフレーム]*/
+#contents-container {
+  opacity: 0.9;
+  padding: 5% 2.5%;
+  width: 100%;
+}
+
+.contents-outer {
+  opacity: 0;
+  margin-top: 30%;
+  padding: 5%;
+  width: 100%;
+  background-color: #dadada;
+  box-shadow: 0.8rem 0.8rem 0.7rem #0e0d0d;
+  transition: all 0.8s ease-out 0s;
+}
+/*コンテンツ枠フェードイン*/
+.contents-outer.contents-fadeup {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.contents-inner {
+  opacity: 0;
+  transform: translateY(10%);
+  transition: all 0.8s ease-out 0.5s;
+}
+/*コンテンツ内フェードイン*/
+.contents-inner.contents-inner-fadeup {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+/*付箋をヘッドタイトルに*/
+.postit {
+  position: relative;
+  padding: 1%;
+  width: 100%;
+  letter-spacing: 0.3rem;
+  text-align: center;
+  font-size: 2.6rem;
+  font-family: "Raleway", "sans-serif";
+}
+
+.postit::before {
+  position: absolute;
+  opacity: 0.7;
+  content: "";
+  top: 45%;
+  left: 25%;
+  height: 20%;
+  width: 50%;
+  background-color: #8181814d;
+}
+
+/*[汎用ボタン]*/
+.local-btn {
+  position: relative;
+  z-index: 10;
+  padding: 1% 10%;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: "Raleway", "sans-serif";
+  text-shadow: 0.1rem 0.1rem 0.2rem #ffffff;
+  border: 0.3rem solid #0000ff;
+  border-radius: 0.5rem;
+  box-shadow: 1.6rem 1.6rem 1.3rem #0e0d0d;
+  background-color: #ff8800;
+}
+
+/*[TOPボタン]*/
+#return-top-icon {
+  position: fixed;
+  bottom: 3%;
+  left: -10%;
+  z-index: 10;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  background: initial;
+  transition: 1s ease-in-out;
+}
+/*TOPボタンスライドイン*/
+#return-top-icon.return-fadein {
+  opacity: 1;
+  left: 3%;
+}
+/*TOPボタンスライドアウト*/
+#return-top-icon.return-fedeout {
+  opacity: 0;
+  left: 50%;
+}
+
+#outer-circle-img {
+  width: 100%;
+  animation: circle-Roll ease-in-out 7s infinite;
+}
+/*回転*/
+@keyframes circle-Roll {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#return-bike-body {
+  position: absolute;
+  top: 28%;
+  left: 16%;
+  width: 70%;
+  animation: bike-vive 0.3s linear infinite;
+}
+/*ホイール回転*/
+@keyframes bike-vive {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(3%);
+  }
+}
+/*バイク発進*/
+#return-bike-body.bike-dash {
+  transition: 0.1s ease;
+  transform: rotate(45deg);
+}
+
+#tire-f {
+  position: absolute;
+  top: 47%;
+  left: 20%;
+  width: 18%;
+  animation: tire-Roll 1s linear infinite;
+}
+
+#tire-r {
+  position: absolute;
+  top: 44%;
+  left: 60%;
+  width: 20%;
+  animation: tire-Roll 1s linear infinite;
+}
+/*ホイール回転*/
+@keyframes tire-Roll {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/*[案内]*/
+.flash-nav {
+  position: absolute;
+  opacity: 0;
+  z-index: 11;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  animation: nav_flash 1.5s linear infinite;
+}
+/*案内点滅*/
+@keyframes nav_flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*===[フッター]===*/
+footer {
+  position: relative;
+  bottom: 0;
+  height: 3%;
+  width: 100vw;
+  align-items: center;
+  background-color: #0e0d0d;
+}
+
+/*copyright*/
+#copy-right {
+  padding: 2%;
+  text-align: center;
+  letter-spacing: 0.1rem;
+  font-size: 0.8rem;
+  font-family: "Raleway", "sans-serif";
+  color: #ffffff;
+}

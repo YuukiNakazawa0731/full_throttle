@@ -1,0 +1,167 @@
+@charset "UTF-8";
+/*
+full throttle
+other
+=====[rgb]=======
+ロゴ オレンジ
+rgb(255, 136, 0)
+=================
+*/
+
+body {
+  opacity: 0;
+  background-image: url(../../images/contents/wood_grain.png);
+  background-size: cover;
+}
+
+/*===[メインコンテンツ]===*/
+#other-container {
+  height: 95vh;
+  width: 100%;
+}
+
+#works-slider-outer {
+  position: relative;
+  left: 10%;
+  opacity: 0;
+  z-index: 10;
+  transform: translateY(15%);
+  padding: 5%;
+  width: 80%;
+  text-align: center;
+  box-shadow: 1.6rem 1.6rem 1.3rem #0e0d0d;
+  background-image: url(../../images/contents/contents_back.png);
+  background-size: cover;
+  transition: all 1s ease-in-out;
+}
+/*コンテンツ枠フェードイン*/
+#works-slider-outer.contents-fadeup {
+  opacity: 1;
+  transform: translateY(10%);
+}
+
+/*=[スライド]=*/
+/*スライド表示部*/
+.works-img-box img {
+  height: auto;
+  width: 35vw;
+}
+
+/*スライド中央*/
+.works-slider .slick-slide.slick-center {
+  opacity: 1;
+  transform: scale(1);
+  transition: 0.3s ease;
+}
+
+/*スライド両端*/
+.works-slider .slick-slide {
+  opacity: 0.7;
+  transform: scale(0.7);
+  transition: 0.3s ease;
+}
+
+/*スライド矢印*/
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 45%;
+  height: 8.5%;
+  width: 2.5%;
+  border-top: 0.5rem solid #949494;
+  border-right: 0.5rem solid #949494;
+  cursor: pointer;
+}
+/*戻る矢印*/
+.slick-prev {
+  left: -5%;
+  transform: rotate(-135deg);
+  transition: all 0.2s ease;
+}
+.slick-prev:hover {
+  height: 10.5%;
+  width: 3%;
+  border-top: 0.7rem solid #949494;
+  border-right: 0.7rem solid #949494;
+}
+
+/*次へ矢印*/
+.slick-next {
+  right: -5%;
+  transform: rotate(45deg);
+  transition: 0.2s ease;
+}
+.slick-next:hover {
+  height: 10.5%;
+  width: 3%;
+  border-top: 0.7rem solid #949494;
+  border-right: 0.7rem solid #949494;
+}
+
+/*ドットナビゲーション*/
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5%;
+}
+.slick-dots li {
+  margin: 0 0.5%;
+}
+.slick-dots button {
+  display: block;
+  height: 0.8rem;
+  width: 0.8rem;
+  border: 0.1rem solid #818181;
+  color: transparent;
+  background-color: #ffffff;
+}
+.slick-dots .slick-active button {
+  background-color: #ff9100;
+}
+
+#works-title-outer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: auto;
+  padding: 2% 0 0.2%;
+  width: 35%;
+  border-bottom: 0.1rem solid #3d3d3d;
+}
+
+#works-title {
+  font-size: 2.4rem;
+  text-shadow: 0.1rem 0.1rem 0.1rem #a1a1a1;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#works-title:hover {
+  letter-spacing: 0.2rem;
+}
+
+.blank-img {
+  margin-left: 1%;
+  padding-bottom: 0.3%;
+  height: 4%;
+  width: 4%;
+}
+
+#works-txt {
+  padding-top: 2%;
+}
+
+#use-tools {
+  padding-top: 2%;
+}
+
+#return-main {
+  position: absolute;
+  opacity: 0;
+  z-index: 10;
+  bottom: 8%;
+  left: 45%;
+  transition: 0.2s ease;
+}
+#return-main:hover {
+  bottom: 7.5%;
+}
