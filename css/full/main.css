@@ -247,7 +247,7 @@ rgb(255, 136, 0)
 #skill-item-2.skill-fadein,
 #skill-item-3.skill-fadein,
 #skill-item-4.skill-fadein,
-#skill-item-5.skill-fadein  {
+#skill-item-5.skill-fadein {
   opacity: 1;
   transform: translateX(0);
 }
