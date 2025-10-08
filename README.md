@@ -1,45 +1,42 @@
 # Full Throttle ポートフォリオ
 
-このリポジトリは、仲澤勇樹のポートフォリオサイト「Full Throttle」のソースコードです。
+仲澤勇樹のポートフォリオサイト「Full Throttle」です。
 
-## 構成
+## 🌐 **デモサイト**: [https://yuukinakazawa0731.github.io/full_throttle/]
 
-- `components/index.php`  
-  メインのポートフォリオページ（HTML/PHP）
+## 特徴
 
-- `components/index_parts/`  
-  サイトの各種パーツ・リソース
-  - `full_throttle.js`：トップページの動的演出・アニメーション制御
-  - `works.js`：作品詳細ページのアニメーション制御
-  - `about_works/`：各作品の詳細ページ（HTML）
-  - `css/`：レスポンシブ対応のスタイルシート（full/middle/mobile）
-  - `images/`：画像素材
+- 初回ローディングアニメーション
+- スクロール / クリック / ホバー演出 (jQuery)
+- レスポンシブ対応 (PC / タブレット / スマホ)
+- 作品個別ページ (about_works/\*)
+- シンプルな静的構成（現在 PHP 不要）
 
-## 主な機能
+## ディレクトリ概要
 
-- ローディングアニメーション（初回アクセス時のみ）
-- スクロールやクリックによる各種アニメーション
-- レスポンシブデザイン（PC/タブレット/スマートフォン対応）
-- jQuery・Slick Carouselによるスライダー演出
-- 作品ごとの詳細ページ
+```
+index.html                ルートトップページ
+jQuery.js                 jQuery本体
+typist.js                 タイピング/ローディング演出
+full_throttle.js          メイン挙動制御
+about_works/              各制作物詳細ページ
+css/
+  full/                   PC向けCSS
+  middle/                 タブレット向けCSS
+  mobile/                 スマホ向けCSS
+images/                   画像素材
+README.md
+```
 
-## セットアップ・動作環境
+## 主な使用技術
 
-1. Webサーバー（PHP対応）上に配置してください。
-2. ルートディレクトリにjQuery（`jQuery.js`）、typist.js、slick.jsが必要です。
-3. `components/index.php` にアクセスするとトップページが表示されます。
+- HTML / CSS (レスポンシブ)
+- JavaScript (jQuery)
+- カスタムアニメーション (typist.js など)
 
-## 依存ライブラリ
+## 作成者
 
-- [jQuery](https://jquery.com/)
-- [Slick Carousel](https://kenwheeler.github.io/slick/)
-- typist.js（ローディングテキストアニメーション）
+**仲澤勇樹 (Nakazawa Yuuki)**
 
-## ライセンス
-
-このポートフォリオは個人利用目的で作成されています。  
-画像・テキスト等の無断転載はご遠慮ください。
-
----
-
+本ポートフォリオの画像・文章の無断転載はご遠慮ください。
 © Nakazawa Yuuki 2022
